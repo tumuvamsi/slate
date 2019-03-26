@@ -225,271 +225,276 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#key-features" class="toc-h1 toc-link" data-title="Key Features">Key Features</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#pre-requisites" class="toc-h1 toc-link" data-title="Pre-requisites">Pre-requisites</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#hardware" class="toc-h2 toc-link" data-title="Hardware">Hardware</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#operating-system" class="toc-h2 toc-link" data-title="Operating System">Operating System</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#software" class="toc-h2 toc-link" data-title="Software">Software</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#installation" class="toc-h1 toc-link" data-title="Installation">Installation</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#standalone-installation" class="toc-h2 toc-link" data-title="Standalone-Installation">Standalone-Installation</a>
+                  </li>
+                  <li>
+                    <a href="#ha-installation" class="toc-h2 toc-link" data-title="HA Installation">HA Installation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#post-installation" class="toc-h1 toc-link" data-title="Post Installation">Post Installation</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#configure-property-file" class="toc-h2 toc-link" data-title="Configure property file">Configure property file</a>
+                  </li>
+                  <li>
+                    <a href="#housekeeping-cron-jobs" class="toc-h2 toc-link" data-title="Housekeeping cron jobs">Housekeeping cron jobs</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://tumuvamsi.github.io/slate/'>Vicom Enterprise Balckout Manager Documentation</a></li>
+            <li><a href='https://tumuvamsi.github.io/slate/vebm_3.1.html'>Vicom Enterprise Balckout Manager Documentation</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>vEBM is an easy-to-use planned maintenance scheduling software that has built-in capability to help efficiently plan and schedule maintenance to suppress unwanted noise. vEBM’s feature rich user-friendly web-interface lets user to create/edit/delete Maintenance schedules quickly for event suppression. It also provides tight integration with various service desk applications. </p>
+<h1 id='key-features'>Key Features</h1>
+<ul>
+<li>User friendly Calendar Interface with time zone support. </li>
+<li>Asset upload from various sources </li>
+<li>Ready to search assets while creating schedules </li>
+<li>LDAP Authentication </li>
+<li>Notification on creation and daily information Mails </li>
+<li>Bulk CI Maintenance via CSV </li>
+<li>REST API / WEB SERVICES for third party integrations </li>
+<li>Simple export features for reporting purpose.<br></li>
+<li>Regularly Sync the Asset data and User data (LDAP) </li>
+</ul>
+<h1 id='pre-requisites'>Pre-requisites</h1><h2 id='hardware'>Hardware</h2>
+<ul>
+<li>RAM 6GB Minimum. (Recommended 8GB) </li>
+<li>Processor 2-CPU system with 3.0 GHz (or greater) CPUs Minimum (4-CPU system with 3.0 GHz (or greater) CPUs) </li>
+<li>Installation Directory must have 30 GB minimum space </li>
+</ul>
+<h2 id='operating-system'>Operating System</h2>
+<ul>
+<li><strong>CentOS7</strong> </li>
+<li><strong>RHEL</strong></li>
+</ul>
+<h2 id='software'>Software</h2>
+<ul>
+<li>Java 1.7 or Later </li>
+<li>MySQL 5.7 (For standalone) </li>
+<li>MariaDB (For HA) </li>
+</ul>
+<h1 id='installation'>Installation</h1><h2 id='standalone-installation'>Standalone-Installation</h2><h3 id='data-base'>Data Base</h3>
+<ol>
+<li>Download and add the repository.
+</br>
+<strong><code>sudo yum localinstall https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</code></strong>
+</br></li>
+<li>Install MySQL 5.7 package 
+</br>
+<strong><code>yum install mysql-community-server</code></strong>
+<p></P></li>
+</ol>
+<h3 id='starting-mysql'>Starting MySQL</h3>
+<ol>
+<li>After the installation is completed, to enable and start the MySQL service</br>
+<strong><code>sudo systemctl enable mysqld</code></strong></br> 
+<strong><code>sudo systemctl start mysqld</code></strong> </br></li>
+<li>Check the MySQL service status by typing</br> 
+<strong><code>sudo systemctl status mysqld</code></strong></br></li>
+</ol>
+<h3 id='secure-mysql'>Secure MySQL</h3>
+<ol>
+<li>Get the temporary password for SQL with by running below command</br> 
+<strong><code>sudo grep &#39;temporary password&#39; /var/log/mysqld.log</code></strong></br></li>
+</ol>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>The output should look something like this </p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight shell tab-shell"><code>2018-05-23T10:59:51.251159Z 5 <span class="o">[</span>Note] <span class="o">[</span>MY-010454] <span class="o">[</span>Server] A temporary password is generated <span class="k">for </span>root@localhost: q&amp;0<span class="o">)</span>V!?fjksL
 </code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+(Make note of the password, because the next command will ask you to enter the temporary root password)
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p></br>
+2. Run the<span>&nbsp;</span> mysql_secure_installation command 
+<strong><code>sudo mysql_secure_installation</code></strong></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The output should look something like this</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>Securing the MySQL server deployment. 
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="gp">$ </span>Enter password <span class="k">for </span>user root: 
 </code></pre>
+<p></br>
+3. After entering the temporary password, you will be asked to set a new password for user root. The password needs to be at least 8-character long and to contain at least one uppercase letter, one lowercase letter, one number and one special character. </p>
+
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The output should look something like this</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<pre class="highlight shell tab-shell"><code>The existing password <span class="k">for </span>the user account root has expired. Please <span class="nb">set </span>a new password. 
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+New password: 
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+Re-enter new password: 
 </code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
 <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+Make note of the new password for connecting to the database
 </aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<p></br>
+4. The script will also ask you to remove the anonymous user, restrict root user access to the local machine and remove the test database. You should answer “Y” (yes) to all questions</p>
+<h3 id='run-the-schema'>Run the schema</h3>
+<ol>
+<li>create the ebm schema and table with below command </br>
+<strong><code>mysqldump -u username -p database_name &gt; data-dump.sql</code></strong></br></li>
+<li>Enter Password on prompt.
+### vEBM Server Installation </li>
+<li>Create ebmuser and make sure he has the permission for /opt directory </br></li>
+<li>Un-tar the vEBM_v3.x.tar package under /opt </br></li>
+<li>tar -xvf vEBM_v3.x.tar </li>
+</ol>
+<h2 id='ha-installation'>HA Installation</h2>
+<ol>
+<li>Will be update Later ...</li>
+</ol>
+<h1 id='post-installation'>Post Installation</h1><h2 id='configure-property-file'>Configure property file</h2>
+<ol>
+<li>Go to /opt/vebm/webapps/VicomEBM-3.0/WEB-INF/classes/</br></li>
+<li>Take a backup of application.properties . Run below command</br>
+<strong><code>cp  application.properties  application.properties.original</code></strong></br></li>
+<li>Open the application.properties file</br>
+<strong><code>vi application.properties</code></strong></br></li>
+<li>Update the properties as given below table </br></li>
+</ol>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Property</th>
+<th>Description</th>
+<th>Value</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>spring.datasource.password</td>
+<td>MySQL password which was created at step 4 of 3.3</td>
+<td>MySql password</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>spring.mail.host</td>
+<td>SMTP Host name</td>
+<td>SMTP Host name</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>spring.mail.port</td>
+<td>Secured SMTP port</td>
+<td>587 (by default)</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>spring.mail.username</td>
+<td>vEBM Service account mail Id</td>
+<td>N/A</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>spring.mail.password</td>
+<td>vEBM Service account mail Id password</td>
+<td>N/A</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td>spring.mail.from</td>
+<td>vEBM Service account mail Id</td>
+<td>N/A</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>spring.mail.to</td>
+<td>vEBM Mail recipients</td>
+<td>N/A</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>mail.sentFlag</td>
+<td>Email Sent flag to enable or disable Email Notifications</td>
+<td>True (by Default) </br>False (for disable)</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>indexing.indexDirectory</td>
+<td>Directory to save the uploaded asset indexes</td>
+<td>Directory to save the uploaded asset indexes</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>indexing.relational</td>
+<td>While creating the schedules this enables the relation of parent child</td>
+<td>True (by Default)</br> False (for disable)</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>indexing.resolverGroup</td>
+<td>Exact Name of Support group column which uploaded as part of asset upload provides the group-based search</td>
+<td>Empty (by Default)</br>Support group/Resolver group column name of asset data (for enable)</td>
+</tr>
+<tr>
+<td>afterSchedule</td>
+<td>Describes the behavior of events after schedule maintenance . For delete events its ‘1’ for unsuppress its ‘0’</td>
+<td>1/0</td>
+</tr>
+<tr>
+<td>assetconfig.cron.expression</td>
+<td>Frequency of Regular asset Sync. From the asset upload configuration page details</td>
+<td>Every day mid night (By default)</td>
+</tr>
+<tr>
+<td>ldap.user.config.cron.expression</td>
+<td>Frequency of Regular LDAP user data sync. From the LDAP  configuration page details</td>
+<td>Every day mid night (By default)</td>
+</tr>
+<tr>
+<td>suppressColumn</td>
+<td>Column of Alert to update when the schedule active</td>
+<td>SuppressEscl (By default)</td>
+</tr>
+<tr>
+<td>suppressFlag</td>
+<td>Value in the column that indicate the alert is suppressed</td>
+<td>6 (By default)</td>
+</tr>
+<tr>
+<td>unsuppressFlag</td>
+<td>Value in the column that indicate the alert is un suppressed</td>
+<td>0 (By default)</td>
 </tr>
 </tbody></table>
+<h2 id='housekeeping-cron-jobs'>Housekeeping cron jobs</h2>
+<blockquote>
+<p>Below cron jobs used for remove archived log files of 10 days old</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>30 2 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> find /opt/tomcat/logs/ -type f -name <span class="s2">"catalina.20[0-9][0-9]-[0-9][0-9]-[0-9][0-9].log"</span> -mtime +10 -delete 
 
+30 2 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> find /opt/tomcat/logs/ -type f -name <span class="s2">"localhost_access_log.20[0-9][0-9]-[0-9][0-9]-[0-9][0-9].txt"</span> -mtime +10 -delete 
+
+30 2 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> find /opt/tomcat/logs/ -type f -name <span class="s2">"localhost.20[0-9][0-9]-[0-9][0-9]-[0-9][0-9].log"</span> -mtime +10 -delete 
+
+30 2 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> find /opt/tomcat/logs/ -type f -name <span class="s2">"manager.20[0-9][0-9]-[0-9][0-9]-[0-9][0-9].log"</span> -mtime +10 -delete
+
+</code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
