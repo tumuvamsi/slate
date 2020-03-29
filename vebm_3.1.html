@@ -261,6 +261,9 @@
                   <li>
                     <a href="#housekeeping-cron-jobs" class="toc-h2 toc-link" data-title="Housekeeping cron jobs">Housekeeping cron jobs</a>
                   </li>
+                  <li>
+                    <a href="#log-rotation-for-catalina-out" class="toc-h2 toc-link" data-title="Log rotation for Catalina.out">Log rotation for Catalina.out</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -496,7 +499,33 @@ Make note of the new password for connecting to the database
 
 30 2 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> find /opt/tomcat/logs/ -type f -name <span class="s2">"manager.20[0-9][0-9]-[0-9][0-9]-[0-9][0-9].log"</span> -mtime +10 -delete
 
-</code></pre>
+</code></pre><h2 id='log-rotation-for-catalina-out'>Log rotation for Catalina.out</h2><h3 id='create-a-file-called-tomcat'>Create a file called tomcat</h3>
+<p>/etc/logrotate.d/tomcat</p>
+<h3 id='copy-the-following-contents-into-this-tomcat-file'>Copy the following contents into this tomcat file</h3>
+<p>/opt/vebm/logs/catalina.out {</p>
+
+<p>copytruncate</p>
+
+<p>daily</p>
+
+<p>rotate 7</p>
+
+<p>compress</p>
+
+<p>missingok</p>
+
+<p>size 1024M</p>
+
+<p>}
+Here&#39;s what each component in the file means: </p>
+
+<p>daily - rotates the catalina.out daily
+ rotate – keeps up to 7 log files
+ compress – compresses the rotated files
+ size – rotates if the size of catalina.out is bigger than 1024MB</p>
+
+<p>No Restart require. </p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
