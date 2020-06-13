@@ -190,4 +190,6 @@ Here's what each component in the file means:
  compress – compresses the rotated files
  size – rotates if the size of catalina.out is bigger than 200MB
  
-No Restart require. 
+No Restart require.
+
+![Benjamin Bannekat](https://octodex.github.com/images/bannekat.png) 
