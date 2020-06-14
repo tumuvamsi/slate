@@ -17,6 +17,7 @@ includes:
 search: true
 ---
 
+
 # Introduction
 Intro: vEBM is an easy-to-use planned maintenance scheduling software that has built-in capability to help efficiently plan and schedule maintenance to suppress unwanted noise. vEBM’s feature rich user-friendly web-interface lets user to create/edit/delete Maintenance schedules quickly for event suppression. It also provides tight integration with various service desk applications. 
 
