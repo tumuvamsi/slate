@@ -192,4 +192,4 @@ Here's what each component in the file means:
  
 No Restart require.
 
-![Benjamin Bannekat](https://octodex.github.com/images/bannekat.png) 
+![Benjamin Bannekat](imgs/vEBM_img1.jpg) 
